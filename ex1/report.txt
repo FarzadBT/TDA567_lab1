@@ -1,0 +1,27 @@
+Input space: String employee != null
+
+Assume all other preconditions fulfilled, unless mentioned otherwise.
+
+Partition #1: starttime < 0
+    test_addWorkingPeriod_part1: input: "employee != null, starttime = -1, endtime = 5",
+        expected: "addWorkingPeriod(employee, starttime, endtime) = false"
+Partition #2: endtime >= size
+    test_addWorkingPeriod_part2: input: "employee != null, starttime = 0, endtime = 5, size = 4",
+        expected: "addWorkingPeriod(employee, starttime, endtime) = false"
+Partition #3: starttime > endtime
+    test_addWorkingPeriod_part3: input: "employee != null, starttime = 3, endtime = 2",
+        expected: "addWorkingPeriod(employee, starttime, endtime) = false"
+Partition #4: String employee != ""
+    test_addWorkingPeriod_part4: input: "employee != "", starttime = 1, endtime = 3",
+        expected: "addWorkingPeriod(employee, starttime, endtime) = true"
+
+Border cases:
+    test_addWorkingPeriod_border1: input: "employee = "", starttime = 1, endtime = 3",
+        expected: "addWorkingPeriod(employee, starttime, endtime) = true, schedule = unchanged"
+    test_addWorkingPeriod_border2: input: "employee1 != "", employee2 != "", starttime = 1, endtime = 3",
+         expected: "addWorkingPeriod(employee1, starttime, endtime) = true,
+            addWorkingPeriod(employee2, starttime, endtime) = false"
+    test_addWorkingPeriod_border3: input: "employee != null, starttime1 = 1, endtime1 = 3, starttime2 = 3, endtime2 = 4"
+        expected: "addWorkingPeriod(employee, starttime1, endtime1) = true,
+            addWorkingPeriod(employee, starttime2, endtime2) = false"
+Found bugs: Method fails partition 3, method does not check if starttime > endtime
