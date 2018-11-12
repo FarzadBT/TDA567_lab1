@@ -4,25 +4,36 @@ import static org.junit.Assert.*;
 
 public class AddWorkPeriodTest1 {
 
+    /**
+     * Test partition #1, starttime < 0
+     */
     @Test
     public void test_addWorkingPeriod_part1() {
         WorkSchedule schedule = new WorkSchedule(6);
         assertFalse(schedule.addWorkingPeriod("", -1, 5));
     }
 
+    /**
+     * Test partition #2, endtime >= size
+     */
     @Test
     public void test_addWorkingPeriod_part2() {
         WorkSchedule schedule = new WorkSchedule(4);
         assertFalse(schedule.addWorkingPeriod("", 0, 5));
     }
 
-    // Bug
+    /**
+     * Test partition #3, starttime > endtime
+     */
     @Test
     public void test_addWorkingPeriod_part3() {
         WorkSchedule schedule = new WorkSchedule(4);
         assertFalse(schedule.addWorkingPeriod("", 3, 2));
     }
 
+    /**
+     * Test Partition #4, employee != ""
+     */
     @Test
     public void test_addWorkingPeriod_part4() {
         WorkSchedule schedule = new WorkSchedule(5);
@@ -30,6 +41,14 @@ public class AddWorkPeriodTest1 {
         assertTrue(schedule.addWorkingPeriod("fdskijsdv", 1, 3));
     }
 
+    /**
+     * Helper method, used by other methods for set-up
+     * @param schedule
+     * @param start
+     * @param end
+     * @param required
+     * @param working
+     */
     private void testScheduled(WorkSchedule schedule, int start, int end, int required, int working) {
         for (int i = start; i <= end; i++) {
             WorkSchedule.Hour h = schedule.readSchedule(i);
@@ -38,6 +57,9 @@ public class AddWorkPeriodTest1 {
         }
     }
 
+    /**
+     * Test border case #1, employee = ""
+     */
     @Test
     public void test_addWorkingPeriod_border1() {
         WorkSchedule schedule = new WorkSchedule(5);
@@ -51,6 +73,9 @@ public class AddWorkPeriodTest1 {
         testScheduled(schedule, 1, 3, 0, 0);
     }
 
+    /**
+     * Test border case #2, two employees, same time slot with only one allowed
+     */
     @Test
     public void test_addWorkingPeriod_border2() {
         WorkSchedule schedule = new WorkSchedule(5);
@@ -69,6 +94,9 @@ public class AddWorkPeriodTest1 {
         testScheduled(schedule, 1, 3, 1, 1);
     }
 
+    /**
+     * Test border case #3, one employee on overlapping schedules
+     */
     @Test
     public void test_addWorkingPeriod_border3() {
         WorkSchedule schedule = new WorkSchedule(5);

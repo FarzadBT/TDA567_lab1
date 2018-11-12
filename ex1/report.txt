@@ -16,12 +16,16 @@ Partition #4: String employee != ""
         expected: "addWorkingPeriod(employee, starttime, endtime) = true"
 
 Border cases:
-    test_addWorkingPeriod_border1: input: "employee = "", starttime = 1, endtime = 3",
-        expected: "addWorkingPeriod(employee, starttime, endtime) = true, schedule = unchanged"
-    test_addWorkingPeriod_border2: input: "employee1 != "", employee2 != "", starttime = 1, endtime = 3",
-         expected: "addWorkingPeriod(employee1, starttime, endtime) = true,
-            addWorkingPeriod(employee2, starttime, endtime) = false"
-    test_addWorkingPeriod_border3: input: "employee != null, starttime1 = 1, endtime1 = 3, starttime2 = 3, endtime2 = 4"
-        expected: "addWorkingPeriod(employee, starttime1, endtime1) = true,
-            addWorkingPeriod(employee, starttime2, endtime2) = false"
+    Case 1: employee = ""
+        test_addWorkingPeriod_border1: input: "employee = "", starttime = 1, endtime = 3",
+            expected: "addWorkingPeriod(employee, starttime, endtime) = true, schedule = unchanged"
+    Case 2: two employees, same time slot with only one allowed
+        test_addWorkingPeriod_border2: input: "employee1 != "", employee2 != "", starttime = 1, endtime = 3",
+             expected: "addWorkingPeriod(employee1, starttime, endtime) = true,
+                addWorkingPeriod(employee2, starttime, endtime) = false"
+    Case 3: one employee on overlapping schedules
+        test_addWorkingPeriod_border3: input: "employee != null, starttime1 = 1, endtime1 = 3, starttime2 = 3, endtime2 = 4"
+            expected: "addWorkingPeriod(employee, starttime1, endtime1) = true,
+                addWorkingPeriod(employee, starttime2, endtime2) = false"
+
 Found bugs: Method fails partition 3, method does not check if starttime > endtime
