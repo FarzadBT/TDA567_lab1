@@ -3,7 +3,8 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        AddWorkPeriodTest.class
+        AddWorkPeriodTest.class,
+        WorkingEmployeesTest.class
 })
 
 public class WorkScheduleTestSuite { }
