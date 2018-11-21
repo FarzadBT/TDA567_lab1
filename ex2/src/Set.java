@@ -17,13 +17,9 @@ public class Set {
 
     public void insert(int x) {
         for (int i = 0; i < a.size(); i++) {
-            if (a.get(i) > x) {
+            if (a.get(i) > x || a.get(i) == x) {
                 a.add(i, x);
-                break;
-            } else {
-                if (a.get(i) == x) {
-                    break;
-                }
+                return;
             }
         }
         a.add(x);
