@@ -1,16 +1,15 @@
+import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-public class insertStatementTests {
+public class InsertStatementTests {
     int[] EMPTY = new int[]{};
 
     @Test
     public void insert_statement_test1() {
         Set s = new Set();
-        assertArrayEquals(s.toArray(), EMPTY);
+        Assert.assertArrayEquals(s.toArray(), EMPTY);
         s.insert(1);
-        assertArrayEquals(s.toArray(), new int[]{1});
+        Assert.assertArrayEquals(s.toArray(), new int[]{1});
     }
 
     /**
@@ -19,10 +18,10 @@ public class insertStatementTests {
     @Test
     public void insert_statement_test2() {
         Set s = new Set();
-        assertArrayEquals(s.toArray(), EMPTY);
+        Assert.assertArrayEquals(s.toArray(), EMPTY);
         s.insert(2);
         s.insert(1);
-        assertArrayEquals(s.toArray(), new int[]{1,2});
+        Assert.assertArrayEquals(s.toArray(), new int[]{1,2});
     }
 
     /**
@@ -31,12 +30,12 @@ public class insertStatementTests {
     @Test
     public void insert_statement_test3() {
         Set s = new Set();
-        assertArrayEquals(s.toArray(), EMPTY);
+        Assert.assertArrayEquals(s.toArray(), EMPTY);
         s.insert(1);
         s.insert(2);
         s.insert(3);
         s.insert(1);
-        assertArrayEquals(s.toArray(), new int[]{1,1,2,3});
+        Assert.assertArrayEquals(s.toArray(), new int[]{1,1,2,3});
     }
 
 
