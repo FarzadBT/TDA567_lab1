@@ -13,6 +13,9 @@ public class ContainsArithTripleTests {
         assertTrue(s.containsArithTriple());
     }
 
+    /**
+     * Contains bug: method is faulty
+     */
     @Test
     public void containsArithTriple_branch_statement_test2() {
         Set s = new Set();

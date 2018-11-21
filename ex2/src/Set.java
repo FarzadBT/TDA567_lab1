@@ -42,7 +42,6 @@ public class Set {
         for (int i = 0, j = 0; i < a.size() && j < s.a.size();) {
             if (a.get(i).equals(s.a.get(j))) {
                 a.remove(i);
-                i++;
                 j++;
             } else {
                 if (a.get(i) < s.a.get(j)) {
@@ -56,7 +55,7 @@ public class Set {
 
     public boolean containsArithTriple() {
         for (int i = 0; i < a.size(); i++) {
-            for (int j = 0; j <= i; j++) {
+            for (int j = i+1; j < a.size(); j++) {
                 if (member(2 * a.get(i) - a.get(j))) return true;
             }
         }
