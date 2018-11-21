@@ -1,0 +1,8 @@
+Started the program with a breakpoint at the start of search and started stepping through it.
+
+When the program got past the part of not finding the value and into the part of setting a new edge
+we saw that the wrong side got a new index.
+For values larger then the middle the right side got an index lower then the middle.
+
+So changing the check from less then to larger then it works.
+It was validated with a small for loop to check that all values are found.
