@@ -1,7 +1,7 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class SectionStatementBranchTests {
+public class SectionTests {
     /**
      * Contains bug: faulty statement method
      */

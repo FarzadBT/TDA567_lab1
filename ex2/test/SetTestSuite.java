@@ -4,7 +4,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         InsertTests.class,
         MemberTests.class,
-        SectionStatementBranchTests.class,
+        SectionTests.class,
         ContainsArithTripleTests.class
         })
 public class SetTestSuite {
