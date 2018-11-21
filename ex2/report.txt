@@ -1,5 +1,4 @@
-To start, we created a flowchart from the source code for each specific method, we will refer to
-the relevant methods .png file since we used them to create our test cases.
+To start, we created a flowchart from the source code for each specific method.
 In order to create the test cases for statement testing we chose a specific node we wanted to
 reach and created a test for that, repeat for all remaining nodes.
 To create cases for branch testing we chose a (viable) path we wanted our test to travel on,
@@ -7,14 +6,11 @@ create a test for that and repeat for all remaining paths.
 Some tests could encompass all statements, branches, or even both at the same time.
 
 a)
-See "TestingInsert.png" for reference.
+Statement Test #1: A simple test, instantly adds an element to the set by skipping the loop.
+Statement Test #2: Inserts an element before another.
+Statement Test #3: Inserts an element at the end
 
-Statement Test #1: A simple test, instantly adds an element to the set.
-Statement Test #2: Take the "leftmost" path in the graph
-Statement Test #3: Take the "middle" path in the graph
-
-Branch Test #1: A test for all the edges in the graph. First we take the edge from the start to the end,
-    then we take the leftmost path, finally we take the middle path (including the loop edge)
+Branch Test #1: A test for all the edges in our flowchart. A collection of all three previous statements tests.
 
 Found bugs: The original method has issues with putting elements inbetween or before others properly, as an example:
     insert(2)
@@ -24,21 +20,16 @@ no matter the path. This is solved by adding a "return" statement immediately af
 The code is also simplified by moving the second if case into the first one.
 
 b)
-See "TestingMember.png" for reference.
+Statement Test #1: A test for checking if values smaller than the first in the set are accepted, returns false.
+Statement Test #2: A test for checking if a value in the set makes the method return true.
+Statement Test #2: A test to make sure the method finishes the for loop and returns false.
 
-Statement Test #1: A test to reach the leftmost (return false) node.
-Statement Test #2: A test to reach the middle (return true) node.
-Statement Test #2: A test to reach the rightmost (return false) node.
-
-Branch Test #1: A test to check all the paths. First checks the leftmost path, then middle path (including the loop)
-and finally the rightmost path.
+Branch Test #1: A test to check all the paths. A collection of the all three previous statement tests.
 
 Bugs found: None
 
 c)
-See "TestingSection.png" for reference.
-
-Statement/Branch Test #1: An all-encompassing test which will reach all the nodes and travel on all the edges.
+Statement/Branch Test #1: An all-encompassing test which will go inside every if-case, both false and true.
 
 Bugs found: After removing an element from the array a, the index counter is falsely incremented.
 Due to how remove works in arraylist, moving all the elements to the right of the removed element to the left,
@@ -50,8 +41,6 @@ removed. Ex:
 This is fixed by simply removing the i++ after removing an element.
 
 d)
-See "TestingContainsArithTriple.png"
-
 Statement/Branch Test #1: This will return true, the three elements in the set is a Arith triple (5 - 2 = 8 - 5)
 Statement/Branch Test #2: This will return false.
 
